@@ -280,6 +280,9 @@ class ResponsePane extends React.PureComponent<Props> {
             <Tab tabIndex="-1">
               <Button>Timeline</Button>
             </Tab>
+            <Tab tabIndex="-1">
+              <Button>Test Results</Button>
+            </Tab>
           </TabList>
           <TabPanel className="react-tabs__tab-panel">
             <ResponseViewer
@@ -332,6 +335,11 @@ class ResponsePane extends React.PureComponent<Props> {
                 editorIndentSize={editorIndentSize}
               />
             </ErrorBoundary>
+          </TabPanel>
+          <TabPanel className="react-tabs__tab-panel">
+            <ErrorBoundary
+              key={response._id}
+              errorClassName="font-error pad text-center"></ErrorBoundary>
           </TabPanel>
         </Tabs>
         <ErrorBoundary errorClassName="font-error pad text-center">

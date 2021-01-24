@@ -32,6 +32,7 @@ import PlaceholderRequestPane from './placeholder-request-pane';
 import { Pane, paneBodyClasses, PaneHeader } from './pane';
 import classnames from 'classnames';
 import { queryAllWorkspaceUrls } from '../../../models/helpers/query-all-workspace-urls';
+import TestsEditor from '../editors/tests-editor';
 
 type Props = {
   // Functions
@@ -249,6 +250,9 @@ class RequestPane extends React.PureComponent<Props> {
                 )}
               </button>
             </Tab>
+            <Tab tabIndex="-1">
+              <button>Tests</button>
+            </Tab>
           </TabList>
           <TabPanel key={uniqueKey} className="react-tabs__tab-panel editor-wrapper">
             <BodyEditor
@@ -387,6 +391,22 @@ class RequestPane extends React.PureComponent<Props> {
                 </p>
               </div>
             )}
+          </TabPanel>
+          <TabPanel>
+            <TestsEditor
+              key={uniqueKey}
+              handleUpdateRequestMimeType={updateRequestMimeType}
+              handleRender={handleRender}
+              handleGetRenderContext={handleGetRenderContext}
+              request={request}
+              workspace={workspace}
+              environmentId={environmentId}
+              settings={settings}
+              onChange={updateRequestBody}
+              onChangeHeaders={forceUpdateRequestHeaders}
+              nunjucksPowerUserMode={settings.nunjucksPowerUserMode}
+              isVariableUncovered={isVariableUncovered}
+            />
           </TabPanel>
         </Tabs>
       </Pane>
