@@ -167,6 +167,7 @@ export const selectActiveRequest = createSelector(
   state => state.entities,
   selectActiveWorkspaceMeta,
   (entities, workspaceMeta) => {
+    console.log('selecting active request', entities.requests);
     const id = workspaceMeta ? workspaceMeta.activeRequestId : 'n/a';
     return entities.requests[id] || entities.grpcRequests[id] || null;
   },
